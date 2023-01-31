@@ -34,17 +34,15 @@ class Room(mainframe):
     def determineRoomQuality(self):
       #score can be determined also by how person checking out left it
       roomQualityShare=[0,0,0]
-        mf=mainframe
-        if self.roomCost==mf.roomHierarchyClass[0]:
-          roomQualityScore[0]=1
-        elif self.roomCost==mf.roomHierarchyClass[1]:
-          roomQualityScore[1]=1
-        elif self.roomCost==mf.roomHierarchyClass[2]:
-          roomQualityScore[2]=2
-        return roomQualityScore
+      mf=mainframe
+      if self.roomCost==mf.roomHierarchyClass[0]:
+        roomQualityScore[0]=1
+      elif self.roomCost==mf.roomHierarchyClass[1]:
+        roomQualityScore[1]=1
+      elif self.roomCost==mf.roomHierarchyClass[2]:
+        roomQualityScore[2]=2
+      return roomQualityScore
          
-    def 
-
         
 
 class Client(mainframe):
@@ -72,6 +70,8 @@ class Client(mainframe):
 def main():
     #take reservations (room number, length of stay, cost, arrival, personal info, security deposit($50-200))
     #get client name 
-
+    createDbMainframe()
+    determineRoomQuality(self)
+    addChargeToAmtOwed(self,total,c)
 
 main()
