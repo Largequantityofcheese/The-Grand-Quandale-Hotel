@@ -1,8 +1,11 @@
+import random
 class mainframe:
     def __init__(self):
         #setting up individual room costs
         self.roomHierarchyClass={"Economy":50,"Economy Plus":100,"Suite":200}
-
+        #security deposit room prices 
+        self.roomSecutriyDeposit = {'Economy':5,'EconomyPlus':10,'Suite':20}
+    
     def createDbMainframe():
         frame=[]
         rooms=[]
@@ -16,17 +19,17 @@ class Room(mainframe):
     def __init__(self):
         #integer values
         self.roomCount
-        self.floorCount
-        self.roomCapacity
-        self.roomQuality
-        #depending on quality of room
+        self.floorCount = 3
+        self.roomCapacity = 4
+        self.roomQuality = 10
+        #depending on quality of room (out of 10)
         #combination of quality (which floor and features)
         #subtract values from original quality score
         self.roomCost
         
         #True=room is open
         #False=room is occupied
-        self.roomAvailability
+        self.roomAvailability=False
 
     def determineRoomQuality(self):
       #score can be determined also by how person checking out left it
@@ -60,8 +63,24 @@ class Client(mainframe):
         self.clientstatus="Respectable"
         #string value
         self.formOfPayment=[]
-        
-    def createReservation(self):
+      
+        #float value
+        self.amountpayed=0.0
+
+    def checkIfOccupied(self):
+      roomsOccupied=[]
+      reservationList=[]
+
+    def setRoomNumber(self, number):
+        if self.amountpayed <=50:
+          self.assignedRoom = random.randint(100,200)
+        elif self.amountpayed==100:
+          self.assignedRoom = random.randint(201,300)
+        elif self.amountpayed ==200:
+          self.assignedRoom = random.randint(301,399)
+        roomsOccupied.append(assignedRoom)
+    #r is a room object to assign a room to a specific client
+    def assignARoom(self,room):
       return None
 
 def main():
