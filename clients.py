@@ -30,13 +30,17 @@ class client():
 
   def sellroom():
     return None
+
   def redeemGiftCard(self):
       self.hotelGiftBalance+=50
       
   def Refusecustomer():
    return None
+
 def main():
     Inputnameandinfo()
     checkClientStatus()
     sellroom()
-    #please stop saving pdfs in our database
+    #please stop saving pdfs in our database\
+
+main()

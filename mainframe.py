@@ -19,7 +19,6 @@ class Room(mainframe):
         #integer values
         self.roomCount
         self.floorCount
-        
         self.roomCapacity
         self.roomQuality
         #depending on quality of room
