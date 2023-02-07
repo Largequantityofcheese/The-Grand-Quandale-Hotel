@@ -5,7 +5,8 @@ roomsOccupied=[]
 
 #emergency system (fire extinguishing, backup generators to hook into the power system)
 #power system
-#make james add blippy's arcade
+
+
 class mainframe:
     def createDbMainframe():
         frame=[]
@@ -55,21 +56,71 @@ class mainframe:
         elif "reserv" in inputChoice.lower() or "reservation" in inputChoice.lower():
             Client.takeReservation(Client)
 
-    def backupGenerator(self,power,backupGenerator):
-        if power == True:
-            print("There is power in the building")
-            if backupGenerator == True:
-                print("We have a backup generator")
-            elif backupGenerator == False:
-                print("We need a backup generator")
-        elif power == False:
-            if backupGenerator == True:
-                power = True
-                print("We will use the backup generator")
-            elif backupGenerator == False:
-                power = False
-                print("L + no power")
+    def blippysArcade():
+        print("")
+        print("Welcome to Blippy Arcade. Would you like to play a game?")
+        yaOrNah = input()
+        #if barRating==10:
+            #customMatch="Vs. Clevland Brown"
+        if yaOrNah == "Yes":
+            print("Would you like to play J-Money Simulator?")
+            nahOrYa = input()
+            if nahOrYa == "Yes":
+                print("Ok, create some bars.")
+                bars=input()
+                barRating=random.randint(0,10)
+                print(f"Wow, those were some bars, your score is: {barRating}/10")
+                print("Hop on J-Money Sim again, yo")
+            elif nahOrYa == "No":
+                print("L Bozo + doesn't even want to play the J-Money simulator. Would you like to play the J-Money Adventure Game instead?")
+                ouiOuNon = input()
+                if ouiOuNon == "Yes":
+                    print("Welcome to the J-Money Adventure Game, Player! You will face many challenges along the way. Are you ready?")
+                    areYouPrepared = input()
+                    if areYouPrepared == "Yes":
+                        print("Your story begins in downtown chicago, where you just finished rapping to a large audience")
+                        print("You are suddenly approached by some goons who are jealous of your ability to rap")
+                        print("You have a mission, make it to the top of the rap game, and nobody will stop you")
+                        print("Will you exert your authority by slapping the goons or will you take the pacifist approach?")
+                        slapOrNah = input()
+                        if slapOrNah == "Slap the goons":
+                            print("You slap the goons very effectively, they all cower and shimmy away")
+                            print("You have finished your buisness with the goons, and now you need to get back on the grind")
+                            print("You have some song ideas in mind, each equally likely to take you straight to the top")
+                            print("As you were thinking however, you are approached by a blind, deaf dog, who goes by the name Murray")
+                            print("You see Murray, but he does not see you, for he is both blind and deaf")
+                            print("You also notice Murray is dripping foam out of his mouth, meaning he's rabid")
+                            print("Murray has drip as well. He is a threat and you need to take him out. Will you do so?")
+                            takeMurrayOut = input()
+                            if takeMurrayOut == "Yes":
+                                print("You gave Murray a rap performance. Being so dissapointed in not being able to hear or see the performance, he spontaneously combusts")
+                                print("After incinerating the blind, deaf dog, murray. you make your way to the studio, to produce some radical tunes. You choose the song know as:")
+                                songChoice=input()
+                                print(f"The song known as: {songChoice}. It's a smash hit, with the youth, showing up in all the tiktoks and fortinite compilations. You're on tour, and are in Utah, where you are rap battling a Mormon dude. He is eating green jell-o and funeral potatoes, with no coffee/tea, or alchohol/tobacco")
+                                ("You decide to diss him with these bars:")
+                                bars = input()
+                                print("The morman is so incredibly roasted that he bursts off stage in tears. He feels as if the only person who could cheer him up now is John Smith himself")
+                                print("This roast was great for your reputation, putting you now at #2 best rapper of all time, right behind your rival J-Blippy")
+                                print("You now head to Ohio, Hell itself. This is where you will make your last stand against the menace that is J-Blippy. If you win this rap battle, you'll be #1, but if you die in the rap battle, you die in real life.")
+                                print("You need to your best to beat J-Blippy, you'll need to bring the heat. You will diss him with these bars:")
+                            else:
+                                print("Murray bit you and you die instantly")
+                        elif slapOrNah=="Shine your grills":
+                            print("The goons have never seen such immaculate zinc grills, they quiver in sheer horror at your magnificent grills, purchased from ebay.com")
+                        elif slapOrNah == "Take the pacifist approach":
+                            print("The goons are not from downtown chicago as it turns out")
+                            print("They are from England, and they decide to stab you to death")
+                            #something stopped you
 
+                    else:
+                        print("L + coward + not even going to play J-Money Adventure Game")
+                elif ouiOuNon == "No":
+                    print("Sorry but we don't have any other games")
+        elif yaOrNah == "No":
+            print("Goodbye then, feel free to come back some other time")
+            #j money need to start pulling his weight in the project
+            #didn't ask + ratio
+#7/10 this game is amazing, it reminds me of my childhood where i was forced to be immersed in raw sewage to find my father's car keys he dropped down the septic tank
 class Room(mainframe):
     def __init__(self):
         #integer values
@@ -162,7 +213,7 @@ class Client(mainframe):
         else:
             return False
 
-    def setRoomNumber(self, number, roomsOccupied):
+    def setRoomNumber(self, roomsOccupied,amountpayed):
         while True:
             r=Room
             if self.amountpayed <=50:
@@ -172,17 +223,25 @@ class Client(mainframe):
             elif self.amountpayed ==200:
                 self.assignedRoom = random.randint(301,399)
             roomStatus=Client.checkIfOccupied(self.assignedRoom,roomsOccupied)
-            if roomStatus is True:
+            if roomStatus is False:
                 r.roomsOccupied.append(self.assignedRoom)
+                break
                 
     def takeReservation(self):
             reservationtotal=0
             print("What type of room would you like to reserve?")
-            roomtype=input("Economy: $50, Economy Plus: $100, Suite: $200")
+            roomtype=input("Economy: $50, Economy Plus: $100, Suite: $200 ")
             print("How many nights are you going to be staying?")
             nights=int(input())
             mainframe.makePayment(mainframe,roomtype,nights)
-            print("You have succsessfully booked your reservation.")
+            print("You have successfully booked your reservation.")
+            if roomtype=="Suite":
+                Client.setRoomNumber(Client,roomsOccupied,200)
+            elif roomtype=="Economy Plus":
+                Client.setRoomNumber(Client,roomsOccupied,100)
+            elif roomtype=="Economy":
+                Client.setRoomNumber(Client,roomsOccupied,50)
+                    
 
 def main():
     c=Client()
@@ -234,3 +293,19 @@ main()
 #                print("Necesitamos más Lemon Pledge")
 #        else:
 #            room = "Clean"
+
+
+#    def backupGenerator(self,power,backupGenerator):
+#        if power == True:
+#            print("There is power in the building")
+#            if backupGenerator == True:
+#                print("We have a backup generator")
+#            elif backupGenerator == False:
+#                print("We need a backup generator")
+#        elif power == False:
+#            if backupGenerator == True:
+#                power = True
+#                print("We will use the backup generator")
+#            elif backupGenerator == False:
+#                power = False
+#                print("L + no power")
